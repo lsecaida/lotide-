@@ -1,13 +1,14 @@
 
-const assertEqual = function(fullArray=[5,6,7]) {
-
-console.log(`${fullArray}, ${fullArray[0]}`)
+const head = function (fullArray=[]) {
+console.log(`${fullArray}, ${fullArray[0]}`);
 
 }
 
-assertEqual()
+const assertEqual = head;
 
+assertEqual(head(["Hello", "Lighthouse", "Labs"]));
 
+assertEqual(head([5,6,7]));
 
 
 
