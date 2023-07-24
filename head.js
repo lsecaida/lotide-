@@ -1,18 +1,14 @@
+const assertEqual = function (actual, expected) {
+  if (actual === expected) {
+    console.log(`Assertion Passed: [${actual}] === [${expected}]`);
+  } else {
+    console.log(`Assertion Failed: [${actual}] !== [${expected}]`);
+  }
+};
 
-const head = function (fullArray=[]) {
-console.log(`${fullArray}, ${fullArray[0]}`);
+const head = function (actual, expected) {
+  return actual[0] || expected; // 
+};
 
-}
-
-const assertEqual = head;
-
-assertEqual(head(["Hello", "Lighthouse", "Labs"]));
-
-assertEqual(head([5,6,7]));
-
-
-
-
-
-
-
+assertEqual(head([5, 6, 7]), 5);
+assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
