@@ -15,9 +15,7 @@ const map = require("./map");
 const findKeyByValue = require("./findKeyByValue");
 const without = require("./without");
 module.exports = {
-  head,
-  tail,
-  middle,
+ 
   assertArraysEqual,
   assertEqual,
   assertObjectsEqual,
@@ -32,4 +30,8 @@ module.exports = {
   map,
   takeUntil,
   without,
+   head,
+  tail,
+  middle,
 };
+//Implement Object Shorthand
