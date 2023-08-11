@@ -1,38 +1,37 @@
-const assertArraysEqual = function (array1, array2) {
-  if (eqArrays(array1, array2)) {
-    console.log(`✅✅✅ Assertion Passed: ${array1}  === ${array2}`);
-  } else {
-    console.log(`🛑🛑🛑 Assertion Failed: ${array1}  !== ${array2}`);
-  }
-};
+const assertArraysEqual = require("./assertArraysEqual");
 
-const eqArrays = function (array1, array2) {
-  if (array1.length !== array2.length) return false;
-  else {
-    for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
-
-const flatten = function (array) {
-  let flattenedArray = [];
-
-  for (let element of array) {
-    if (Array.isArray(element)) {
-      for (let item of element) {
-        flattenedArray.push(item);
+const flatten = function (nestedArray) {
+  let flattened = []; //holds the elemts from the nested array
+  for (let i of nestedArray) {
+    if (Array.isArray(i)) {
+      //checks if element is a nested array
+      for (let j of i) {
+        flattened.push(j); //adds elements from the nested array to the result
       }
     } else {
-      flattenedArray.push(element);
+      flattened.push(i); //adds elemts from the array that are not inside nested arrays
     }
   }
-  return flattenedArray;
+  return flattened;
 };
-
 module.exports = flatten;
-
-console.log(flatten([1, 2, [3, 4], 5, [6]]));
+//test
+assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+assertArraysEqual(flatten([true, 2, ["3", 4], 5, [6]]), [
+  true,
+  2,
+  "3",
+  4,
+  5,
+  6,
+]);
+assertArraysEqual(flatten([true, 2, ["3", 4], 5, [6, 1, "8"]]), [
+  true,
+  2,
+  "3",
+  4,
+  5,
+  6,
+  1,
+  "8",
+]);

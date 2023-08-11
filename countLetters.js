@@ -33,6 +33,8 @@ function count_occurs(test, callback) {
   }
 }
 
-// test string
-let test = "LHL";
-count_occurs(test, count);
+module.exports = count_occurs;
+
+// // test string
+// let test = "LHL";
+// count_occurs(test, count);

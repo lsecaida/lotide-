@@ -1,35 +1,22 @@
-const assertArraysEqual = function (array1, array2) {
-  if (eqArrays(array1, array2)) {
-    console.log(`✅✅✅ Assertion Passed: ${array1}  === ${array2}`);
-  } else {
-    console.log(`🛑🛑🛑 Assertion Failed: ${array1}  !== ${array2}`);
-  }
-};
-
-const eqArrays = function (array1, array2) {
-  if (array1.length !== array2.length) return false;
-  else {
-    for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
+const assertArraysEqual = require("./assertArraysEqual");
+const eqArrays = require("./eqArrays");
 
 const letterPositions = function (sentence) {
-  const results = {};
+  const results = {}; //Contains the letters in the sentence as keys with the array values
   for (let i = 0; i < sentence.length; i++) {
+    //it goes trough  the letters in the sentence
     if (sentence[i] === " ") {
+      // it bypasses an empty space
       continue;
     } else if (results[sentence[i]]) {
-      results[sentence[i]].push(i);
+      //check for duplicate letters
+      results[sentence[i]].push(i); //it adds the duplicate letters
     } else {
-      results[sentence[i]] = [i];
+      results[sentence[i]] = [i]; //gets the key value in the array with the index
     }
   }
   return results;
 };
 
-console.log(letterPositions("Lighthouse in the house"));
+module.exports = letterPositions;
+// console.log(letterPositions("Lighthouse in the house"));
